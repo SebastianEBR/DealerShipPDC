@@ -1,6 +1,6 @@
 package org.uniquindio.edu.co.pdc.model;
 
-public class Client extends Person{
+public class Client extends People {
 
     private boolean member;
     private CLevel cLevel;
@@ -12,7 +12,7 @@ public class Client extends Person{
         this.shippingAddress = builder.shippingAddress;
     }
 
-    public static class Builder extends Person.Builder<Builder> {
+    public static class Builder extends People.Builder<Builder> {
 
         private CLevel cLevel;
         private String shippingAddress;

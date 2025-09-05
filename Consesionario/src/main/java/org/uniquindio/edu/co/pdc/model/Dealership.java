@@ -8,13 +8,13 @@ public class Dealership {
     private String name;
     private String nit;
     private ArrayList<Vehicle> listVehicles;
-    private ArrayList<Person> listPersons;
+    private ArrayList<People> listPeople;
 
     private Dealership(Builder builder){
         this.name = builder.name;
         this.nit = builder.nit;
         this.listVehicles = new ArrayList<>();
-        this.listPersons = new ArrayList<>();
+        this.listPeople = new ArrayList<>();
     }
 
     public String getName() {
@@ -41,12 +41,12 @@ public class Dealership {
         this.listVehicles = listVehicles;
     }
 
-    public ArrayList<Person> getListPersons() {
-        return listPersons;
+    public ArrayList<People> getListPeople() {
+        return listPeople;
     }
 
-    public void setListPersons(ArrayList<Person> listPersons) {
-        this.listPersons = listPersons;
+    public void setListPeople(ArrayList<People> listPeople) {
+        this.listPeople = listPeople;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class Dealership {
                 "name='" + name + '\'' +
                 ", nit='" + nit + '\'' +
                 ", listVehicles=" + listVehicles +
-                "List of persons: " + listPersons;
+                "List of persons: " + listPeople;
     }
 
     public static class Builder{
@@ -101,7 +101,7 @@ public class Dealership {
     //CRUD to Persons
     public Client registerClient(String name, String id, CLevel cLevel, String shippingAddress) throws Exception{
 
-        Optional<Person> personOptional = searchPerson(id);
+        Optional<People> personOptional = searchPerson(id);
         if(personOptional.isPresent()){
             throw new Exception("Not is possible that two person have the same id "+ id);
         }
@@ -111,13 +111,13 @@ public class Dealership {
                 .cLevel(cLevel)
                 .shippingAddress(shippingAddress)
                 .build();
-        listPersons.add(clientC);
+        listPeople.add(clientC);
         return clientC;
     }
 
     public Employee registerEmployee(String name, String id, String code, String job, double salary) throws Exception{
 
-        Optional<Person> personOptional = searchPerson(id);
+        Optional<People> personOptional = searchPerson(id);
         if(personOptional.isPresent()){
             throw new Exception("Not is possible that two person have the same id "+ id);
         }
@@ -129,11 +129,11 @@ public class Dealership {
                 .salary(salary)
                 .build();
 
-        listPersons.add(employeeC);
+        listPeople.add(employeeC);
         return employeeC;
     }
 
-    private Optional<Person> searchPerson(String id){
-        return listPersons.stream().filter(p -> p.getId().equals(id)).findFirst();
+    private Optional<People> searchPerson(String id){
+        return listPeople.stream().filter(p -> p.getId().equals(id)).findFirst();
     }
 }

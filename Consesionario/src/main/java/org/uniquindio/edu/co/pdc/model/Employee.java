@@ -1,6 +1,6 @@
 package org.uniquindio.edu.co.pdc.model;
 
-public class Employee extends Person{
+public class Employee extends People {
 
     private String code;
     private String job;
@@ -12,7 +12,7 @@ public class Employee extends Person{
         this.salary = builder.salary;
     }
 
-    public static class Builder extends Person.Builder<Builder> {
+    public static class Builder extends People.Builder<Builder> {
 
         private String code;
         private String job;
